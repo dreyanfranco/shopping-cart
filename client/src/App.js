@@ -3,16 +3,24 @@ import ItemDetails from './pages/ItemsDetails/ItemDetails';
 import ItemsPage from './pages/ItemsPage/ItemsPage';
 import Home from "./pages/Home/Home";
 import NavBar from "./components/NavBar";
+import CartProvider from "./context/ShoppingCartContext";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
-function App() {
+const queryClient = new QueryClient()
+
+const App = () => {
   return (
     <>
-      <NavBar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/itemspage' element={<ItemsPage />} />
-        <Route path='/itemdetails/:product_id' element={<ItemDetails />} />
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <CartProvider>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/itemspage' element={<ItemsPage />} />
+            <Route path='/itemdetails/:product_id' element={<ItemDetails />} />
+          </Routes>
+        </CartProvider>
+      </QueryClientProvider>
     </>
 
   );
