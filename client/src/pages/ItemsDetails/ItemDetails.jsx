@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button, Container, Row, Col, Form } from "react-bootstrap";
 
 const ItemDetails = () => {
 
@@ -30,6 +30,9 @@ const ItemDetails = () => {
                     </ul>
                     <hr />
                     <Col>
+                        <Form>
+
+                        </Form>
                         <ul>
                             <li>Storage: {item.battery}</li>
                             <li>Colors:</li>
