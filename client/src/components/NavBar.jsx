@@ -3,10 +3,10 @@ import { Container, Navbar as NavBarBs, Nav, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { BsCart2 } from "react-icons/bs";
 
-export const NavBar = () => {
+const NavBar = () => {
     return (
         <NavBarBs stycky='top' className='bg-white shadow-sm mb-3'>
-            <Container className='me-auto'>
+            <Container>
                 <Nav>
                     <Nav.Link to="/" as={NavLink}>Home</Nav.Link>
                     <Nav.Link to="/itemspage" as={NavLink}>Items</Nav.Link>
@@ -14,7 +14,6 @@ export const NavBar = () => {
                 <Button
                     style={{ position: "relative" }} variant='outline-primary'>
                     <BsCart2 size={30} />
-
                 </Button>
                 <div
                     className='rounded-circle bg-danger d-flex justify-content-center align-items-center' style={{
@@ -24,7 +23,7 @@ export const NavBar = () => {
                         position: 'absolute',
                         bottom: 0,
                         right: 0,
-                        transform: "translate(-5%, 25%)"
+                        transform: "translate(-200%, 25%)"
                     }}>
                     3
                 </div>
@@ -32,3 +31,5 @@ export const NavBar = () => {
         </NavBarBs>
     )
 }
+
+export default NavBar;

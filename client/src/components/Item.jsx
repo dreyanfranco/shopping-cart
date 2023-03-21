@@ -1,6 +1,8 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap';
-export const Item = ({ id, brand, model, price, imgUrl }) => {
+import { Link } from 'react-router-dom';
+
+const Item = ({ id, brand, model, price, imgUrl }) => {
     const quantity = 1;
     return (
         <Card className='h-100'>
@@ -12,8 +14,8 @@ export const Item = ({ id, brand, model, price, imgUrl }) => {
                     <span className='ms-2 text-muted'>{price}</span>
                 </Card.Title>
                 <div className='mt-auto'>
-                    {quantity === 0 ? (
-                        <Button className='w-100'>Add to cart</Button>
+                    {quantity === 1 ? (
+                        <Link to={`/itemdetails/${id}`}><Button className='w-100'>More details</Button></Link>
                     ) : <div className='d-flex align-items-center flex-column' style={{ gap: '0.5rem' }} >
                         <div className='d-flex align-items-center justify-content-center' style={{ gap: '0.5rem' }}>
                             <Button>-</Button>
@@ -29,3 +31,5 @@ export const Item = ({ id, brand, model, price, imgUrl }) => {
         </Card>
     )
 }
+
+export default Item;

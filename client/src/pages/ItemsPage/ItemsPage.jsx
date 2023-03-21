@@ -1,17 +1,28 @@
 import { Row, Col } from 'react-bootstrap';
-import React from 'react';
-import items from '../../data/items.json';
-import { Item } from '../../components/Item';
+import React, { useEffect, useState } from 'react';
+import Item from '../../components/Item';
 
-export const ItemsPage = () => {
+const ItemsPage = () => {
+
+    const [items, setItems] = useState([]);
+
+    const loadItems = () => {
+        fetch('https://itx-frontend-test.onrender.com/api/product')
+            .then(res => res.json())
+            .then(allItems => setItems(allItems));
+    }
+
+    useEffect(() => loadItems(), []);
+
     return (
         <>
-            <Row md={2} xs={1} lg={3} className='g-3' >
+            <Row md={3} xs={1} lg={4} className='g-3' >
                 {items.map(item => (
                     <Col key={item.id}><Item {...item} /></Col>
                 ))}
             </Row>
-
         </>
     )
 }
+
+export default ItemsPage;
