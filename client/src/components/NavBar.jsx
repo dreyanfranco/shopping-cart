@@ -51,14 +51,16 @@ const NavBar = () => {
             </NavBarBs>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Shopping cart</Modal.Title>
+                    <Modal.Title >Shopping cart</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ListGroup>
+                    <ListGroup className='list-group-flush'>
                         {cart.items.map(item => (
                             <ListGroup.Item key={item.id}>
                                 <Image src={item.imgUrl} width={100} />
-
+                                <p className='mb-1'>{item.brand}</p>
+                                <p className='mb-1'>{item.model}</p>
+                                <p className='mb-1'>{item.price}€</p>
                             </ListGroup.Item>
                         ))}
                     </ListGroup>

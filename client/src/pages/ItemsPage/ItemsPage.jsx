@@ -33,8 +33,10 @@ const ItemsPage = () => {
                 <p>Loading...</p>
                 :
                 <>
-                    <Form.Label>Search:</Form.Label>
-                    <Form.Control type="text" onInput={(event) => handleSearch(event)} />
+                    <Form className='mb-4 d-flex justify-content-end align-items-center'>
+                        <Form.Control type="search" className="w-25"
+                            aria-label="Search" placeholder='Search' onInput={(event) => handleSearch(event)} />
+                    </Form>
                     <Row xs={1} md={3} lg={4} className='g-3' >
                         {items.map(item => (
                             <Col key={item.id}><Item {...item} /></Col>

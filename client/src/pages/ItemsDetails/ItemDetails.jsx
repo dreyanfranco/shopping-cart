@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import { CartDispatchContext, CartContext } from "../../context/ShoppingCartContext";
 import { useQuery } from "@tanstack/react-query";
+import './styles.css';
 
 const cacheTime = 60 * 60 * 1000;
 
@@ -59,25 +60,26 @@ const ItemDetails = () => {
                             <img src={data.imgUrl} alt={data.model} style={{ objectFit: 'contain', height: 'fit-content' }} />
                         </Col>
                         <Col md={{ span: 6 }}>
+
                             <h3>Details</h3>
                             <ul>
                                 <li>Brand: {data.brand}</li>
                                 <li>Model: {data.model}</li>
-                                <li>Price: {data.price}</li>
+                                <li>Price: {data.price}€</li>
                             </ul>
                             <hr />
                             <Col>
                                 <Form>
                                     <ul>
                                         <li>Storage:
-                                            <Form.Select onChange={(event) => handleStorageChange(event)}>
+                                            <Form.Select className="w-50 mt-2" onChange={(event) => handleStorageChange(event)}>
                                                 {data.options.storages.map((storage) => (
                                                     <option key={storage.code} value={storage.code}>{storage.name}</option>
                                                 ))}
                                             </Form.Select></li>
                                         <li>
                                             Colors:
-                                            <Form.Select onChange={(event) => handleColorChange(event)}>
+                                            <Form.Select className="w-50 mt-2" onChange={(event) => handleColorChange(event)}>
                                                 {data.options.colors.map((color) => (
                                                     <option key={color.code} value={color.code}>{color.name}</option>
                                                 ))}
@@ -86,9 +88,9 @@ const ItemDetails = () => {
                                     </ul>
                                 </Form>
                             </Col>
-                            <div className='mt-auto'>
+                            <div className='mt-auto d-flex align-items-center justify-content-center'>
                                 {quantity === 0 ? (
-                                    <Button onClick={() => handleAddOneToCart(data)} className='w-100'>Add to cart</Button>
+                                    <Button onClick={() => handleAddOneToCart(data)} className='w-50'>Add to cart</Button>
                                 ) : <div className='d-flex align-items-center flex-column' style={{ gap: '0.5rem' }} >
                                     <div className='d-flex align-items-center justify-content-center' style={{ gap: '0.5rem' }}>
                                         <Button onClick={() => handleRemoveOneItem(data.id)}>-</Button>
@@ -100,9 +102,9 @@ const ItemDetails = () => {
                                     <Button onClick={() => handleDeleteFromCart(data.id)} variant='danger' size='0'>Delete</Button>
                                 </div>}
                             </div>
+                            <Link to={'/itemspage'} className="mt-3 d-flex justify-content-center align-content-center"><Button variant='primary' className='w-25' >Go back</Button></Link>
                         </Col>
                     </Row>
-                    <Link to={'/itemspage'}><Button variant='primary'>Go back</Button></Link>
                 </>
             }
         </Container>

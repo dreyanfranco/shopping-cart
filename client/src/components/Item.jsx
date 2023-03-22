@@ -11,7 +11,7 @@ const Item = ({ id, brand, model, price, imgUrl }) => {
                 <Card.Title className='d-flex justify-content-between align-items-baseline mb-4'>
                     <span className='ms-2'>{brand}</span>
                     <span className='ms-2'>{model}</span>
-                    <span className='ms-2 text-muted'>{price}</span>
+                    <span className='ms-2 text-muted'>{price}€</span>
                 </Card.Title>
                 <div className='mt-auto'>
                     <Link to={`/itemdetails/${id}`}><Button className='w-100'>More details</Button></Link>
