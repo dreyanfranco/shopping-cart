@@ -56,7 +56,7 @@ const ItemDetails = () => {
                 :
                 <>
                     <Row>
-                        <Col md={{ span: 6 }}>
+                        <Col md={{ span: 6 }} className='text-center'>
                             <img src={data.imgUrl} alt={data.model} style={{ objectFit: 'contain', height: 'fit-content' }} />
                         </Col>
                         <Col md={{ span: 6 }}>
