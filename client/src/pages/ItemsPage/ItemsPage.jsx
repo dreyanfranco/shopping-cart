@@ -23,7 +23,6 @@ const ItemsPage = () => {
 
     useEffect(() => {
         if (!data) return;
-
         setItems(data);
     }, [data])
 

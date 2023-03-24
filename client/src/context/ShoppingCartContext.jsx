@@ -4,13 +4,18 @@ import { createContext, useReducer } from "react";
 // Provider -> gives react app access to all the things in the context
 
 const cartKey = 'cart-items';
+
 const initialState = {
     items: localStorage.getItem(cartKey) ? JSON.parse(localStorage.getItem(cartKey)) : [],
 }
 
+// provides the info (state) from cart. I'm passing initialState because values will be provided by whatever is in localStorage
+
 export const CartContext = createContext(initialState);
 
-export const CartDispatchContext = createContext(() => { })
+// provides the function that lets components dispatch actions 
+
+export const CartDispatchContext = createContext(null);
 
 function getItemQuantity(id, state) {
 
@@ -83,7 +88,8 @@ function removeOneFromCart(id, state) {
                     ? { ...item, quantity: item.quantity - 1 }
                     : item
         )
-    }
+    };
+
     localStorage.setItem(cartKey, JSON.stringify(cartItems));
 
     return cartItems;
@@ -102,12 +108,6 @@ function deleteFromCart(id, state) {
 
     return cartItems;
 }
-
-// function getTotalCost() {
-//     let totalCost = 0;
-
-// }
-
 
 function reducer(state, action) {
     const { type, payload } = action;
@@ -131,6 +131,8 @@ function reducer(state, action) {
 
     }
 }
+
+// Here I'm importing both contexts CartContext and CartDispatchContext. Then I pass the state (items?) and dispatch (functions logic?) as value to them.
 
 function CartProvider({ children }) {
     const [state, dispatch] = useReducer(reducer, initialState);

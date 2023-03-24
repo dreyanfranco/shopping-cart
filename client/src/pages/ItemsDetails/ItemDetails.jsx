@@ -24,8 +24,8 @@ const ItemDetails = () => {
     useEffect(() => {
         if (!data) return;
 
-        setStorage(data.options.storages[0].code)
-        setColor(data.options.colors[0].code)
+        setStorage(data.options.storages[0].code);
+        setColor(data.options.colors[0].code);
     }, [data]);
 
     const quantity = cart.items.find(item => item.id === data?.id)?.quantity || 0;
